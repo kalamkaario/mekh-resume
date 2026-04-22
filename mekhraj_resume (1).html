@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mekhraj Singh Bisen — Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --lime: #c8f53b;
+    --pink: #ff3c78;
+    --black: #0f0f0f;
+    --white: #f5f5f0;
+    --grey: #e2e2da;
+    --mid: #888880;
+    --ink: #1a1a18;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ─── PAGE ─── */
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── BIG HEADER BAND ─── */
+  .header {
+    background: var(--black);
+    padding: 48px 52px 36px;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  /* Diagonal lime slash */
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 300px; height: 300px;
+    background: var(--lime);
+    transform: rotate(25deg);
+    opacity: 0.12;
+  }
+
+  .header::after {
+    content: 'DESIGN';
+    position: absolute;
+    right: 50px; bottom: -18px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 9rem;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .name-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .name-block h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.8rem, 9vw, 7rem);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    color: var(--white);
+  }
+
+  .name-block h1 .highlight {
+    color: var(--lime);
+  }
+
+  .badge-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+  }
+
+  .badge.outline {
+    background: transparent;
+    color: var(--lime);
+    border: 1px solid var(--lime);
+  }
+
+  .contact-block {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: rgba(245,245,240,0.55);
+    line-height: 2.1;
+  }
+
+  .contact-block a {
+    color: rgba(245,245,240,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-block a:hover { color: var(--lime); }
+
+  /* ─── TICKER STRIP ─── */
+  .ticker {
+    background: var(--lime);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px 0;
+    animation: slideIn 0.6s 0.1s both;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: scroll 18s linear infinite;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    color: var(--black);
+  }
+
+  .ticker-inner span { margin: 0 28px; }
+  .ticker-inner .sep { color: var(--pink); }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ─── BODY GRID ─── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    min-height: 700px;
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    padding: 44px 44px 44px 52px;
+    border-right: 2px solid var(--grey);
+  }
+
+  /* ─── SIDEBAR ─── */
+  aside {
+    background: var(--black);
+    padding: 40px 32px;
+    color: var(--white);
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.12em;
+    color: var(--black);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label .label-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--pink);
+    flex-shrink: 0;
+  }
+
+  .sidebar .section-label {
+    color: var(--lime);
+  }
+
+  .sidebar .section-label .label-dot {
+    background: var(--pink);
+  }
+
+  /* ─── ABOUT ─── */
+  .section { margin-bottom: 40px; animation: fadeUp 0.7s ease both; }
+  .section:nth-child(1) { animation-delay: 0.15s; }
+  .section:nth-child(2) { animation-delay: 0.25s; }
+
+  .about-text {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: #444;
+    border-left: 3px solid var(--lime);
+    padding-left: 16px;
+  }
+
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  /* ─── JOBS ─── */
+  .job {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--grey);
+    position: relative;
+  }
+  .job:last-child { border-bottom: none; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+  }
+
+  .job-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .job-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    background: var(--black);
+    color: var(--lime);
+    padding: 3px 8px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .job-company {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--pink);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .job-bullets {
+    list-style: none;
+    padding: 0;
+  }
+
+  .job-bullets li {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #555;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+
+  .job-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--lime);
+    font-size: 0.72rem;
+    top: 1px;
+  }
+
+  /* ─── SIDEBAR CONTENT ─── */
+  .sidebar .section { margin-bottom: 36px; }
+
+  .skill-chip {
+    display: block;
+    font-size: 0.75rem;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: rgba(245,245,240,0.8);
+    letter-spacing: 0.02em;
+  }
+  .skill-chip:last-child { border-bottom: none; }
+
+  .tool-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin: 3px 3px 3px 0;
+    border: 1px solid var(--lime);
+    color: var(--lime);
+    transition: all 0.15s;
+    cursor: default;
+  }
+
+  .tool-tag:hover {
+    background: var(--lime);
+    color: var(--black);
+  }
+
+  .community-row {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .community-row:last-child { border-bottom: none; }
+
+  .community-row .c-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .community-row .c-desc {
+    font-size: 0.68rem;
+    color: rgba(245,245,240,0.4);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  .edu-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-item .deg { font-size: 0.78rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+  .edu-item .inst { font-size: 0.65rem; color: rgba(245,245,240,0.4); margin-top: 3px; }
+
+  /* ─── FOOTER ─── */
+  .footer-bar {
+    background: var(--pink);
+    padding: 12px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .ticker { display: none; }
+    .header::before, .header::after { display: none; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 700px) {
+    .body-grid { grid-template-columns: 1fr; }
+    main { padding: 32px 24px; border-right: none; border-bottom: 3px solid var(--grey); }
+    aside { padding: 32px 24px; }
+    .name-row { flex-direction: column; align-items: flex-start; }
+    .contact-block { text-align: left; }
+    .footer-bar { padding: 12px 24px; flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="name-row">
+      <div class="name-block">
+        <h1>MEKHRAJ<br><span class="highlight">SINGH BISEN</span></h1>
+        <div class="badge-row">
+          <span class="badge">Graphic Designer</span>
+          <span class="badge outline">Visual Storyteller</span>
+          <span class="badge outline">Brand Builder</span>
+        </div>
+      </div>
+      <div class="contact-block">
+        <div>9201911056</div>
+        <div><a href="mailto:darknessalive1@gmail.com">darknessalive1@gmail.com</a></div>
+        <div><a href="#">@bisen_theories</a></div>
+        <div>Bilaspur, Chattisgarh</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Adobe Photoshop</span><span class="sep">✦</span>
+      <span>Illustrator</span><span class="sep">✦</span>
+      <span>InDesign</span><span class="sep">✦</span>
+      <span>Typography</span><span class="sep">✦</span>
+      <span>Branding</span><span class="sep">✦</span>
+      <span>Motion Graphics</span><span class="sep">✦</span>
+      <span>Editorial Design</span><span class="sep">✦</span>
+      <span>Figma</span><span class="sep">✦</span>
+      <span>Color Theory</span><span class="sep">✦</span>
+      <span>Layout Systems</span><span class="sep">✦</span>
+      <span>Adobe Photoshop</span><span class="sep">✦</span>
+      <span>Illustrator</span><span class="sep">✦</span>
+      <span>InDesign</span><span class="sep">✦</span>
+      <span>Typography</span><span class="sep">✦</span>
+      <span>Branding</span><span class="sep">✦</span>
+      <span>Motion Graphics</span><span class="sep">✦</span>
+      <span>Editorial Design</span><span class="sep">✦</span>
+      <span>Figma</span><span class="sep">✦</span>
+      <span>Color Theory</span><span class="sep">✦</span>
+      <span>Layout Systems</span><span class="sep">✦</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-grid">
+
+    <!-- MAIN -->
+    <main>
+
+      <section class="section">
+        <div class="section-label"><span class="label-dot"></span>Profile</div>
+        <p class="about-text">
+          Pursuing a <strong>Master's in Journalism & Mass Communication</strong> at Guru Ghasidas University, with a foundation in <strong>Computer Science (Honours)</strong>. Over 5 years of hands-on experience crafting visually compelling work — from editorial layouts to brand identities. Currently founding <strong>Kathakaar Studios</strong>, a creative studio for storytelling and cultural design.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-label"><span class="label-dot"></span>Experience</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Founder & Creative Designer</div>
+            <div class="job-period">Sept 2025 — Present</div>
+          </div>
+          <div class="job-company">Kathakaar Studios</div>
+          <ul class="job-bullets">
+            <li>Led visual identity and design direction for storytelling, editorial, and cultural projects.</li>
+            <li>Designed branding systems, campaign creatives, and editorial layouts.</li>
+            <li>Oversaw design quality across print and digital outputs.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Graphic Designer</div>
+            <div class="job-period">Dec 2025</div>
+          </div>
+          <div class="job-company">Haribhoomi Newspaper</div>
+          <ul class="job-bullets">
+            <li>Designed editorial graphics and visual elements for print and digital news platforms.</li>
+            <li>Delivered high-accuracy visuals under daily newsroom deadlines.</li>
+            <li>Adapted designs for multiple formats while maintaining visual consistency.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Graphic Designer</div>
+            <div class="job-period">Oct 2025</div>
+          </div>
+          <div class="job-company">Ask Architectural Studio</div>
+          <ul class="job-bullets">
+            <li>Designed branding material, pitch decks, and social media visuals aligned with architectural minimalism.</li>
+            <li>Translated architectural concepts into clean, structured visual narratives.</li>
+            <li>Maintained strong layout hierarchy and grid systems for presentations and digital media.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Senior Graphic Designer</div>
+            <div class="job-period">Feb – June 2025</div>
+          </div>
+          <div class="job-company">Books Clinic / Sahityagram Publication</div>
+          <ul class="job-bullets">
+            <li>Designed book covers and interior layouts, balancing author intent with market-driven visual appeal.</li>
+            <li>Developed consistent visual systems for multi-title publications across genres.</li>
+            <li>Created promotional creatives for Instagram and Facebook, improving reach and engagement.</li>
+            <li>Worked closely with editors to ensure typographic clarity and print-ready accuracy.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Media Intern</div>
+            <div class="job-period">May 2023 – June 2025</div>
+          </div>
+          <div class="job-company">MOOCS Lab — Guru Ghasidas Vishwavidyalaya</div>
+          <ul class="job-bullets">
+            <li>Designed social media creatives and learning visuals for online education platforms.</li>
+            <li>Created infographics to simplify complex academic and technical concepts.</li>
+            <li>Assisted in maintaining brand consistency across digital course assets.</li>
+          </ul>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside>
+
+      <section class="section">
+        <div class="section-label"><span class="label-dot"></span>Skills</div>
+        <div>
+          <span class="skill-chip">Visual Identity & Branding</span>
+          <span class="skill-chip">Typography & Layout Systems</span>
+          <span class="skill-chip">Book Cover & Editorial Design</span>
+          <span class="skill-chip">Social Media & Digital Creatives</span>
+          <span class="skill-chip">Print-Ready & Pre-Press Design</span>
+          <span class="skill-chip">News & Editorial Graphics</span>
+          <span class="skill-chip">Motion Graphics</span>
+          <span class="skill-chip">Color Theory & Composition</span>
+          <span class="skill-chip">Concept-Driven Design</span>
+          <span class="skill-chip">Photo Retouching</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label"><span class="label-dot"></span>Tools</div>
+        <div>
+          <span class="tool-tag">Photoshop</span>
+          <span class="tool-tag">Illustrator</span>
+          <span class="tool-tag">InDesign</span>
+          <span class="tool-tag">Lightroom</span>
+          <span class="tool-tag">Figma</span>
+          <span class="tool-tag">Canva</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label"><span class="label-dot"></span>Communities</div>
+        <div class="community-row">
+          <div class="c-name">Chalchitra GGV</div>
+          <div class="c-desc">Official Media Club — Photography, Videography, Poster Design</div>
+        </div>
+        <div class="community-row">
+          <div class="c-name">GDSC – GGV</div>
+          <div class="c-desc">Design-tech workshops & collaborative creative projects</div>
+        </div>
+        <div class="community-row">
+          <div class="c-name">GeeksforGeeks – GGV</div>
+          <div class="c-desc">Collaborative creative and technical projects</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label"><span class="label-dot"></span>Education</div>
+        <div class="edu-item">
+          <div class="deg">M.A. Journalism & Mass Communication</div>
+          <div class="inst">Guru Ghasidas University, Koni</div>
+        </div>
+        <div class="edu-item">
+          <div class="deg">B.Sc. Computer Science (Hons.)</div>
+          <div class="inst">Undergraduate Foundation</div>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-bar">
+    <span>Mekhraj Singh Bisen</span>
+    <span>Graphic Designer · Visual Storyteller · 2026</span>
+    <span>darknessalive1@gmail.com</span>
+  </footer>
+
+</div>
+</body>
+</html>
